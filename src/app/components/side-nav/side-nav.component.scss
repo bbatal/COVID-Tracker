@@ -1,0 +1,27 @@
+.app-sidenav-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #eee;
+  }
+
+.app-sidenav {
+  width: 240px;
+}
+
+.app-sidenav-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+button {
+  outline: none;
+  width: 100%;
+}
+
+.wrapper {
+  margin: 50px;
+}
