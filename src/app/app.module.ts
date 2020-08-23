@@ -26,6 +26,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
 
 import { HighchartsChartModule } from 'highcharts-angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -63,7 +65,9 @@ import { LatestNewsComponent } from './components/latest-news/latest-news.compon
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+    MatDividerModule,
+    MatCardModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [ConfigService],

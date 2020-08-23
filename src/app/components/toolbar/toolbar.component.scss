@@ -6,7 +6,7 @@ $iconWidth: 56px;
 
 .sidenav-toggle {
     display: none;
-
+    border: none;
     padding: 0;
     margin: 8px;
     min-width: $iconWidth;
@@ -23,5 +23,6 @@ $iconWidth: 56px;
         width: $iconWidth;
         line-height: $iconWidth;
         color: white;
+        background-color: rgb(63,82,181);
     }
 }
