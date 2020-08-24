@@ -29,6 +29,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 
+import { CountUpModule } from 'ngx-countup';
+
 import { HighchartsChartModule } from 'highcharts-angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -67,7 +69,8 @@ import { LatestNewsComponent } from './components/latest-news/latest-news.compon
     MatInputModule,
     MatSortModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    CountUpModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [ConfigService],

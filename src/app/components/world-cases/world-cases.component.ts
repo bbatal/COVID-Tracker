@@ -18,6 +18,27 @@ const mapWorld = require('@highcharts/map-collection/custom/world.geo.json');
 export class WorldCasesComponent implements OnInit {
   country; 
   totalCasesToday;
+  totalCasesYesterday;
+
+  totalDeathsToday;
+  totalDeathsYesterday;
+
+  totalRecoveredToday;
+  totalRecoveredYesterday;
+
+  totalActiveToday;
+  totalActiveYesterday;
+
+  option = {
+    prefix: "(+",
+    suffix: ")"
+  };
+
+  option2 = {
+    prefix: "(",
+    suffix: ")"
+  }
+
   lastUpdate;
   Highcharts: typeof Highcharts = Highcharts; // required
   updateFlag = true;
@@ -97,7 +118,16 @@ export class WorldCasesComponent implements OnInit {
         this.updateFlag = !this.updateFlag;
        });
 
-       this.totalCasesToday = this.service.totalCases();
+       this.service.totalCases().subscribe(data => {
+         this.totalCasesToday = data[0];
+         this.totalCasesYesterday = data[1];
+         this.totalDeathsToday = data[2];
+         this.totalDeathsYesterday = data[3];
+         this.totalRecoveredToday = data[4];
+         this.totalRecoveredYesterday = data[5];
+         this.totalActiveToday = data[6];
+         this.totalActiveYesterday = data[7];
+       });
        this.lastUpdate = this.service.latestDate();
     }, 500)
 

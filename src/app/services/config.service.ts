@@ -79,7 +79,11 @@ i: number = 0;
 
 
     return arr;
-  }))
+  },
+  error => {
+    console.log('Failed to fetch users');
+  }
+  ));
 }
 
 

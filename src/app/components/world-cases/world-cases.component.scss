@@ -21,6 +21,31 @@ h2 {
 }
 
 @media only screen and (max-width: 1100px) {
+
+.blue {
+    background-color: rgb(11,123,255);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.red {
+    background-color: rgb(220,53,69);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.green {
+    background-color: rgb(254,193,7);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.yellow {
+    background-color: rgb(40,167,69);
+    display: flex;
+    flex-wrap: wrap;
+}
+
     .container {
         display: none;
     }
@@ -54,6 +79,7 @@ h2 {
         padding: 0 0 6px 6px;
         font-size: 1.6em;
         color: white;
+        width: 100%;
      }
 
 
@@ -80,19 +106,3 @@ h2 {
 
   }
 
-
-.blue {
-    background-color: rgb(11,123,255);
-}
-
-.red {
-    background-color: rgb(220,53,69);
-}
-
-.green {
-    background-color: rgb(254,193,7);
-}
-
-.yellow {
-    background-color: rgb(40,167,69);
-}
