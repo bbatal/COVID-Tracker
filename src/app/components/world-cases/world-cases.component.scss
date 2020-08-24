@@ -5,3 +5,94 @@
     justify-content: center;
     align-items: center; 
 }
+
+.mobile-cont {
+    display: none;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+h2 {
+    padding: 0;
+    margin: 0;
+}
+
+@media only screen and (max-width: 1100px) {
+    .container {
+        display: none;
+    }
+
+    .mobile-cont {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-wrap: wrap;
+    }
+    
+    .title {
+        width: 100%;
+        text-align: center;
+    }
+
+    .card-item {
+        line-height: 50px;
+        text-align: start;
+        width: 100%;
+        margin: 10px 5px 10px 5px;
+     }
+
+     .card-title {
+         padding: 6px 0 0 6px;
+         font-size: 2.3em;
+         color: white;
+     }
+
+     .card-footer {
+        padding: 0 0 6px 6px;
+        font-size: 1.6em;
+        color: white;
+     }
+
+
+}
+
+@media only screen and (max-width: 720px) {
+    .container {
+        display: none;
+    }
+
+    .mobile-cont {
+        justify-content: center;
+        align-items: center; 
+        flex-direction: column;
+    }
+
+    .card-item {
+       line-height: 50px;
+       text-align: start;
+       width: 90%;
+       margin: 10px 0 10px 0;
+       
+    }
+
+  }
+
+
+.blue {
+    background-color: rgb(11,123,255);
+}
+
+.red {
+    background-color: rgb(220,53,69);
+}
+
+.green {
+    background-color: rgb(254,193,7);
+}
+
+.yellow {
+    background-color: rgb(40,167,69);
+}

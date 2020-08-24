@@ -6,8 +6,8 @@ import HC_exporting from 'highcharts/modules/exporting';
 import { ConfigService } from 'src/app/services/config.service';
 HC_exporting(Highcharts);
 
-const mapWorld = require('@highcharts/map-collection/custom/world.geo.json');
 
+const mapWorld = require('@highcharts/map-collection/custom/world.geo.json');
 
 
 @Component({
@@ -17,6 +17,8 @@ const mapWorld = require('@highcharts/map-collection/custom/world.geo.json');
 })
 export class WorldCasesComponent implements OnInit {
   country; 
+  totalCasesToday;
+  lastUpdate;
   Highcharts: typeof Highcharts = Highcharts; // required
   updateFlag = true;
   chartMap = {
@@ -94,7 +96,12 @@ export class WorldCasesComponent implements OnInit {
         this.chartMap.series[0].data = x;
         this.updateFlag = !this.updateFlag;
        });
+
+       this.totalCasesToday = this.service.totalCases();
+       this.lastUpdate = this.service.latestDate();
     }, 500)
+
+
   }
 
 }
