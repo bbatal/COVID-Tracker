@@ -17,30 +17,30 @@ style="width: 100%; height: 100%; display: block; margin: auto;"
 
 <h1 class="title">WorldWide Cases Updated {{lastUpdate | async | date }}</h1>
         <mat-card class="card-item blue"> 
-            <h2 class="card-title">{{ (totalCasesToday | async)[0] }} Cases </h2>
+            <h2 class="card-title" [countUp]="totalCasesToday"> 0 </h2><span class="card-title">Cases</span>
 
-            <p class="card-footer">(+{{(totalCasesToday | async)[1] }} today)</p>
+            <p class="card-footer" [countUp]="totalCasesYesterday" [options]="option"> 0 </p>
         
         </mat-card>
 
         <mat-card class="card-item red"> 
-            <h2 class="card-title">{{ (totalCasesToday | async)[2] }} Deaths </h2>
+            <h2 class="card-title" [countUp]="totalDeathsToday"> 0 </h2><span class="card-title">Deaths</span>
 
-            <p class="card-footer">(+{{(totalCasesToday | async)[3] }} today)</p>
+            <p class="card-footer" [countUp]="totalDeathsYesterday" [options]="option"> 0 </p>
         
         </mat-card>
 
         <mat-card class="card-item yellow"> 
-            <h2 class="card-title">{{ (totalCasesToday | async)[4] }} Recoveries </h2>
+            <h2 class="card-title" [countUp]="totalRecoveredToday"> 0 </h2><span class="card-title">Recoveries</span>
 
-            <p class="card-footer">(+{{(totalCasesToday | async)[5] }} today)</p>
+            <p class="card-footer" [countUp]="totalRecoveredYesterday" [options]="option"> 0 </p>
         
         </mat-card>
 
         <mat-card class="card-item green"> 
-            <h2 class="card-title">{{ (totalCasesToday | async)[6] }} Active Cases </h2>
+            <h2 class="card-title" [countUp]="totalActiveToday"> 0 </h2><span class="card-title">Active Cases</span>
 
-            <p class="card-footer">(+{{(totalCasesToday | async)[7] }} today)</p>
+            <p class="card-footer" [countUp]="totalActiveYesterday" [options]="option2"> 0 </p>
         
         </mat-card>
 </div>
