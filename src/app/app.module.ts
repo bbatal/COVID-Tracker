@@ -30,6 +30,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 
 import { CountUpModule } from 'ngx-countup';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { HighchartsChartModule } from 'highcharts-angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -70,7 +71,8 @@ import { LatestNewsComponent } from './components/latest-news/latest-news.compon
     MatSortModule,
     MatDividerModule,
     MatCardModule,
-    CountUpModule
+    CountUpModule,
+    FlexLayoutModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [ConfigService],

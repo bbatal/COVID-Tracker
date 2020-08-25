@@ -92,4 +92,8 @@ latestDate() {
     return data["Afghanistan"][data["Afghanistan"].length-1]["date"];
   }))
 }
+
+getFile(): Observable<any> {
+  return this.http.get<any>(this.url);
+}
 }

@@ -1,10 +1,13 @@
 declare var require: any;
 import { map } from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import * as Highcharts from 'highcharts/highmaps';
 import HC_exporting from 'highcharts/modules/exporting';
 import { ConfigService } from 'src/app/services/config.service';
 HC_exporting(Highcharts);
+
+const MEDIUM_WIDTH_BREAKPOINT = 1100;
+const SMALL_WIDTH_BREAKPOINT = 720;
 
 
 const mapWorld = require('@highcharts/map-collection/custom/world.geo.json');
@@ -29,9 +32,13 @@ export class WorldCasesComponent implements OnInit {
   totalActiveToday;
   totalActiveYesterday;
 
+  private mediaMatcherMEDIUM: MediaQueryList = matchMedia(`(max-width: ${MEDIUM_WIDTH_BREAKPOINT}px)`);
+  private mediaMatcherSMALL: MediaQueryList = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`);
+
   option = {
     prefix: "(+",
-    suffix: ")"
+    suffix: ")",
+    
   };
 
   option2 = {
@@ -108,6 +115,11 @@ export class WorldCasesComponent implements OnInit {
   ]
   };
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.isScreenSmallOrMedium();
+    };
+
 
   constructor(private service: ConfigService) { }
 
@@ -117,21 +129,26 @@ export class WorldCasesComponent implements OnInit {
         this.chartMap.series[0].data = x;
         this.updateFlag = !this.updateFlag;
        });
-
-       this.service.totalCases().subscribe(data => {
-         this.totalCasesToday = data[0];
-         this.totalCasesYesterday = data[1];
-         this.totalDeathsToday = data[2];
-         this.totalDeathsYesterday = data[3];
-         this.totalRecoveredToday = data[4];
-         this.totalRecoveredYesterday = data[5];
-         this.totalActiveToday = data[6];
-         this.totalActiveYesterday = data[7];
-       });
        this.lastUpdate = this.service.latestDate();
     }, 500)
 
-
+    this.isScreenSmallOrMedium();
   }
+
+  isScreenSmallOrMedium() {
+    if(this.mediaMatcherMEDIUM.matches || this.mediaMatcherSMALL.matches) {
+      this.service.totalCases().subscribe(data => {
+        this.totalCasesToday = data[0];
+        this.totalCasesYesterday = data[1];
+        this.totalDeathsToday = data[2];
+        this.totalDeathsYesterday = data[3];
+        this.totalRecoveredToday = data[4];
+        this.totalRecoveredYesterday = data[5];
+        this.totalActiveToday = data[6];
+        this.totalActiveYesterday = data[7];
+      })
+    }
+  }
+
 
 }
