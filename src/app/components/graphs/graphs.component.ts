@@ -11,20 +11,23 @@ import { map } from 'rxjs/operators';
 })
 export class GraphsComponent implements OnInit {
   updateFlag = true; //needed
+  chart = false;
   Highcharts: typeof Highcharts = Highcharts; // required
   chartOptions = {
     events: {
-      load: this.getData().subscribe(x => {
+      addSeries: this.getData().subscribe(x => {
         this.chartOptions.series[0].data = x;
       }),
-      load2: this.getDate().subscribe(x => {
-        this.chartOptions.xAxis.categories = x;
+      addSeries2: this.getDate().subscribe(y => {
+        this.chartOptions.xAxis.categories = y;
+        this.updateFlag = !this.updateFlag;
       })
     },
     series:[{
       data: [],
       type: 'area',
-      showInLegend: false
+      showInLegend: false,
+      name: 'Confirmed Cases'
     }],
     credits: {
       enabled: false
@@ -49,7 +52,9 @@ export class GraphsComponent implements OnInit {
   constructor(private service: ConfigService) { }
 
   ngOnInit() {
-    
+    setTimeout(() => {
+      this.chart = true;
+    },400)
   }
 
   //returns an array of total confirmed per day from all countries
@@ -66,7 +71,7 @@ getData() {
       }
       confirmedTotal.push(testArr.reduce((a,b) => a + b, 0));
     }
-    return confirmedTotal;
+   return confirmedTotal
  }))
 }
 

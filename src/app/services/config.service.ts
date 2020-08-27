@@ -5,6 +5,7 @@ import { map, reduce } from 'rxjs/operators';
 import { keys } from 'highcharts';
 import { CountryCodeService } from './country-code.service';
 import { Country } from '../models/country';
+import * as moment from 'moment';
 
 type iresponse = { 
   [key: string]: [{
@@ -96,4 +97,40 @@ latestDate() {
 getFile(): Observable<any> {
   return this.http.get<any>(this.url);
 }
+
+
+  //returns an array of total confirmed per day from all countries
+  getDataPoints() {
+    return this.http.get(this.url).pipe(map(data => {
+      let confirmedTotal = [];
+      let number= data["Afghanistan"].length;
+      let keys = Object.keys(data);
+  
+      for (let i = 0; i < number; i++) {
+        let testArr = [];
+        for (let prop of keys) {
+          testArr.push(data[prop][i]["confirmed"]);
+        }
+        confirmedTotal.push(testArr.reduce((a,b) => a + b, 0));
+      }
+      return confirmedTotal;
+   }))
+  }
+  
+  //function to create dates for each option
+  getDateValues() {
+    return this.http.get(this.url).pipe(map(data => {
+      let datesArr = [];
+  
+      //need a random country to pull the number of dates from 
+      let count = data["Afghanistan"].length
+  
+      for (let i = 0; i < count; i++) {
+        let date = new Date(data["Afghanistan"][i]["date"]);
+        let someDate = moment.utc(date, 'LLL').format('MMM' + '.' + 'D').toString();
+        datesArr.push(someDate);
+      }
+      return datesArr;
+    }))
+  }
 }
