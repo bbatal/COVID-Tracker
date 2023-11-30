@@ -28,6 +28,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { CountUpModule } from 'ngx-countup';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -72,7 +73,8 @@ import { LatestNewsComponent } from './components/latest-news/latest-news.compon
     MatDividerModule,
     MatCardModule,
     CountUpModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatExpansionModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [ConfigService],

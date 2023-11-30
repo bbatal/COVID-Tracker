@@ -16,10 +16,33 @@
                  <a matLine [routerLink]="['/graphs']">
                  <mat-icon>assessment</mat-icon> Graphs</a>
              </mat-list-item>
-             <mat-list-item>
+             <!-- <mat-list-item>
                  <a matLine [routerLink]="['/latest-news']">
-                 <mat-icon>box</mat-icon> Latest News</a>
-             </mat-list-item>
+                 <mat-icon>box</mat-icon> Latest News</a> -->
+                <mat-accordion [routerLink]="['/latest-news']">
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Self aware panel
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <mat-list class="list-nav">
+                            <mat-list-item class="list-item" *ngFor="let source of mSources" (click)="searchArticles(source.id)">
+                        
+                              <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/images/'+ source.id +'.png)'}" class="example-header-image"></div>
+                        
+                              <span class="source-name"> {{source.name}}</span>
+                        
+                              
+                        
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-expansion-panel>
+                </mat-accordion>
+             <!-- </mat-list-item> -->
             
           </mat-nav-list>
     </mat-sidenav>

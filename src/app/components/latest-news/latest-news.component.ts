@@ -18,9 +18,15 @@ export class LatestNewsComponent implements OnInit {
 
   ngOnInit() {
     //load articles
-    this.newsapi.initArticles().subscribe(data => this.mArticles = data['articles']);
+    // this.newsapi.initArticles().subscribe(data => this.mArticles = data['articles']);
     //load news sources
     this.newsapi.initSources().subscribe(data => this.mSources = data['sources']);
+    //subscribe to stream of articles
+    this.newsapi.currentSource$.subscribe(value => this.mArticles = value['articles']);
+  }
+
+  ngOnChanges() {
+    this.newsapi.initArticles().subscribe(data => this.mArticles = data['articles']);
   }
 
   searchArticles(source) {
